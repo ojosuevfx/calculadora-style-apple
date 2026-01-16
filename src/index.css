@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap');
+
+/* Apple Calculator Liquid Glass Design System */
+
+@layer base {
+  /* Light Theme */
+  :root {
+    --background: 220 20% 96%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 32 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 90%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 15% 85%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 220 15% 92%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 15% 85%;
+    --input: 220 15% 85%;
+    --ring: 32 100% 50%;
+
+    --radius: 1.5rem;
+
+    /* Liquid Glass Custom Properties - Light */
+    --glass-bg: 0 0% 100% / 0.6;
+    --glass-border: 0 0% 100% / 0.8;
+    --glass-highlight: 0 0% 100% / 0.9;
+    --glass-shadow: 220 20% 50% / 0.15;
+    
+    /* Operator Orange */
+    --operator: 32 100% 50%;
+    --operator-foreground: 0 0% 100%;
+    
+    /* Number Button - Light */
+    --number-bg: 0 0% 100% / 0.7;
+    --number-hover: 0 0% 100% / 0.9;
+    --number-text: 220 20% 10%;
+    
+    /* Function Button (AC, +/-, %) - Light */
+    --function-bg: 220 15% 85% / 0.8;
+    --function-hover: 220 15% 80% / 0.9;
+    
+    /* Glow color */
+    --glow-color: 32 100% 50% / 0.15;
+  }
+
+  /* Dark Theme */
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 32 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 0% 85%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 32 100% 50%;
+
+    /* Liquid Glass Custom Properties - Dark */
+    --glass-bg: 0 0% 100% / 0.08;
+    --glass-border: 0 0% 100% / 0.15;
+    --glass-highlight: 0 0% 100% / 0.25;
+    --glass-shadow: 0 0% 0% / 0.4;
+    
+    /* Number Button - Dark */
+    --number-bg: 0 0% 100% / 0.12;
+    --number-hover: 0 0% 100% / 0.2;
+    --number-text: 0 0% 98%;
+    
+    /* Function Button - Dark */
+    --function-bg: 0 0% 100% / 0.25;
+    --function-hover: 0 0% 100% / 0.35;
+    
+    /* Glow color */
+    --glow-color: 32 100% 50% / 0.2;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-container {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glass-bg)),
+      hsl(0 0% 100% / 0.04)
+    );
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: 
+      0 8px 32px hsl(var(--glass-shadow)),
+      inset 0 1px 0 hsl(var(--glass-highlight));
+  }
+
+  .glass-button {
+    @apply relative overflow-hidden transition-all duration-200 ease-out;
+    background: hsl(var(--number-bg));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    box-shadow: 
+      0 4px 16px hsl(0 0% 0% / 0.2),
+      inset 0 1px 0 hsl(0 0% 100% / 0.15);
+  }
+
+  .glass-button:hover {
+    background: hsl(var(--number-hover));
+    transform: scale(1.02);
+  }
+
+  .glass-button:active {
+    transform: scale(0.98);
+    background: hsl(0 0% 100% / 0.25);
+  }
+
+  .glass-button-function {
+    background: hsl(var(--function-bg));
+  }
+
+  .glass-button-function:hover {
+    background: hsl(var(--function-hover));
+  }
+
+  .glass-button-operator {
+    background: hsl(var(--operator));
+    border: 1px solid hsl(32 100% 60% / 0.3);
+    box-shadow: 
+      0 4px 16px hsl(32 100% 50% / 0.3),
+      inset 0 1px 0 hsl(32 100% 70% / 0.3);
+  }
+
+  .glass-button-operator:hover {
+    background: hsl(32 100% 60%);
+  }
+
+  .glass-button-operator:active {
+    background: hsl(32 100% 70%);
+  }
+
+  .glass-button-operator.active {
+    background: hsl(0 0% 100%);
+    color: hsl(var(--operator));
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+}

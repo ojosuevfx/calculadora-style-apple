@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Apple Glass</title>
+    <meta name="description" content="Calculadora estilo Apple com efeito liquid glass" />
+    <meta name="author" content="Josué Ribeiro" />
+
+    <meta property="og:title" content="Calculadora Apple Glass" />
+    <meta property="og:description" content="Calculadora estilo Apple com efeito liquid glass" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <script>
+      // Apply theme immediately to prevent flash
+      (function() {
+        const theme = localStorage.getItem('calculator-theme');
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
